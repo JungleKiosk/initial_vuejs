@@ -1,10 +1,10 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from './components/Home.vue'
 </script>
 
 <template>
   <!-- <h1>Test App.vue</h1> -->
-  <HelloWorld msg="Vite + Vue" />
+  <Home msg="Vite + Vue" />
 </template>
 
 <style scoped>
