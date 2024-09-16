@@ -12,6 +12,20 @@ export default {
    return {
       cards: data,
       searchCard: '',
+    };
+  },
+  computed:{
+    filteredCard(){
+      if (!this.searchCard){
+        return this.cards;
+      }
+      const query = this.searchCard.toLowerCase();
+
+      return this.cards.filter(card =>
+        card.title.toLowerCase().includes(query) ||
+        card.desc.toLowerCase().includes(query) ||
+        card.icon.toLowerCase().includes(query)
+      )
     }
   }
 }
@@ -25,9 +39,9 @@ const cards = ref(data);
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-3">
-        <input type="text" class="form-control" v-model="searchCard">
+        <input type="text" class="form-control" placeholder="Search card..." v-model="searchCard">
       </div>
-      <div class="col-3 text-center" v-for="card in cards">
+      <div class="col-3 text-center" v-for="card in filteredCard">
         <div class="card">
           <div class="card-body">
             <div class="card-title">
